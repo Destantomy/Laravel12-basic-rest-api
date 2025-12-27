@@ -1,0 +1,17 @@
+description: Article bad request
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example:
+            errors: 
+              title:
+                - "title required"
+                - "title already exist"
+                - "title minimum has 10 characters"
+              content:
+                - "content required"
+                - "content minimum has 10 characters"

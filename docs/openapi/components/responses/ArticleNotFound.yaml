@@ -1,0 +1,9 @@
+description: Article not found
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "article not found"

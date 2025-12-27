@@ -1,0 +1,9 @@
+description: Forbidden
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: You are not the author of this article

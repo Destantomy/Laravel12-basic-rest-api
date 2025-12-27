@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  username:
+    type: string
+  createdAt:
+    type: string
+    format: date-time
+required:
+  - id
+  - username
+  - createdAt

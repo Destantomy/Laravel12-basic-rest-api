@@ -1,0 +1,120 @@
+articles:
+
+  post:
+    summary: Create article
+    tags: [Article]
+    security:
+      - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [title, content]
+            properties:
+              title:
+                type: string
+              content:
+                type: string
+    responses:
+      '201':
+        description: Article created
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/Article.yaml
+      '401':
+        $ref: ../components/responses/Unauthorized.yaml
+      '400':
+        $ref: ../components/responses/ArticleBadrequest.yaml
+
+  get:
+    summary: Get all articles
+    tags: [Article]
+    security:
+      - bearerAuth: []
+    responses:
+      '200':
+        description: List of articles
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../components/schemas/Article.yaml
+      '401':
+        $ref: ../components/responses/Unauthorized.yaml
+
+articleById:
+  get:
+    summary: Get article by ID
+    tags: [Article]
+    security:
+      - bearerAuth: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Article detail
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/Article.yaml
+      '401':
+        $ref: ../components/responses/Unauthorized.yaml
+      '404':
+        $ref: ../components/responses/ArticleNotFound.yaml
+
+  put:
+    summary: Update article by ID
+    tags: [Article]
+    security:
+      - bearerAuth: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              content:
+                type: string
+    responses:
+      '200':
+        description: Article updated
+      '401':
+        $ref: ../components/responses/Unauthorized.yaml
+      '403':
+        $ref: ../components/responses/Forbidden.yaml
+
+  delete:
+    summary: Delete article by ID
+    tags: [Article]
+    security:
+      - bearerAuth: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    responses:
+      '204':
+        description: Article deleted
+      '401':
+        $ref: ../components/responses/Unauthorized.yaml
+      '403':
+        $ref: ../components/responses/Forbidden.yaml

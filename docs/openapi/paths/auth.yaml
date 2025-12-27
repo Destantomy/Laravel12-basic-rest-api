@@ -1,0 +1,54 @@
+register:
+  post:
+    summary: Register user
+    tags: [Auth]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [username, password]
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+    responses:
+      '201':
+        description: User registered
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/User.yaml
+      '400':
+        $ref: '../components/responses/AuthBadrequest.yaml'
+
+login:
+  post:
+    summary: Login user
+    tags: [Auth]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [username, password]
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+    responses:
+      '200':
+        description: Login success
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      '400':
+        $ref: '../components/responses/AuthBadrequest.yaml'

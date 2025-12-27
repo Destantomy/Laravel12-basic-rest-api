@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Simple Blog API
+  description: API untuk User & Article dengan autentikasi
+  version: 1.0.0
+    
+
+servers:
+  - url: http://127.0.0.1:8000/api
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/register:
+    $ref: ./paths/auth.yaml#/register
+  /auth/login:
+    $ref: ./paths/auth.yaml#/login
+
+  /articles:
+    $ref: ./paths/articles.yaml#/articles
+  /articles/{id}:
+    $ref: ./paths/articles.yaml#/articleById
+
+components:
+  securitySchemes:
+    $ref: ./components/SecuritySchemes.yaml
+  schemas:
+    User:
+      $ref: ./components/schemas/User.yaml
+    Article:
+      $ref: ./components/schemas/Article.yaml
+  responses:
+    Unauthorized:
+      $ref: ./components/responses/Unauthorized.yaml
+    Forbidden:
+      $ref: ./components/responses/Forbidden.yaml

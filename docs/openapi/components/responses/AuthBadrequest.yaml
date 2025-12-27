@@ -1,0 +1,19 @@
+description: Auth bad request
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example:
+            errors:
+              username:
+                - "username required"
+                - "username already exist"
+                - "username minimum has 6 characters"
+                - "username invalid"
+              password:
+                - "password required"
+                - "password minimum has 6 characters"
+                - "password invalid"
