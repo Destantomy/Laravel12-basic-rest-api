@@ -7,10 +7,8 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 use App\Models\User;
-use App\Models\Article;
 
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRegisterRequest;
@@ -22,7 +20,7 @@ class UserController extends Controller
     public function register(UserRegisterRequest $request): JsonResponse
     {
         $data = $request->validated();
-        if (User::where('username', $data['username'])->exists())
+        if(User::where('username', $data['username'])->exists())
         {
             return throw new HttpResponseException(response([
                 'errors' => [

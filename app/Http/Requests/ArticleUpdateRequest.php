@@ -7,7 +7,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserUpdateRequest extends FormRequest
+class ArticleUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,13 +25,16 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => [
-                'sometimes', 
-                'min: 6',
-                'max: 150',
-                Rule::unique('users', 'username')->ignore($this->user()->id),
-        ],
-            'password' => ['sometimes', 'min: 6'],
+            'title' => [
+                'sometimes',
+                'min: 10',
+                'max: 50',
+                Rule::unique('articles', 'title')->ignore($this->route('id')),
+            ],
+            'content' => [
+                'sometimes',
+                'min: 10'
+            ]
         ];
     }
 
