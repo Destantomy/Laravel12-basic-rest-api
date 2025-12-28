@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use  App\Http\Controllers\UserController;
-// use  App\Http\Controllers\ArticleController;
+use  App\Http\Controllers\ArticleController;
 
 // public route for user log-no need auth
 Route::prefix('users')->group(function () {
@@ -12,8 +12,10 @@ Route::prefix('users')->group(function () {
 
 Route::get('/users', [UserController::class, 'getAllUsers'])
     ->middleware('auth:sanctum');
+Route::get('/articles', [ArticleController::class, 'getAllArticles'])
+    ->middleware('auth:sanctum');
 
-// protected routes for users
+// protected routes for users & articles
 Route::middleware('auth:sanctum')->group(function() {
     // users
     Route::prefix('users')->group(function () {
@@ -21,5 +23,13 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::patch('/me', [UserController::class, 'updateUserById']);
         Route::delete('/me', [UserController::class, 'deleteUserById']);
         Route::delete('/me/logout', [UserController::class, 'logout']);
+    });
+
+    // articles
+    Route::prefix('articles')->group(function () {
+        Route::post('/me', [ArticleController::class, 'postArticle']);
+        Route::get('/me/{id}', [ArticleController::class, 'getArticle']);
+        Route::put('/me/{id}', [ArticleController::class, 'updateArticleById']);
+        Route::delete('/me/{id}', [ArticleController::class, 'deleteArticleById']);
     });
 });
