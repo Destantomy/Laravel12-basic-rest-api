@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 use App\Models\User;
+use App\Models\Article;
 
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRegisterRequest;
@@ -40,9 +41,7 @@ class UserController extends Controller
     public function login(UserLoginRequest $request): JsonResponse
     {
         $data = $request->validated();
-
         $user = User::where('username', $data['username'])->first();
-
         if (!$user || !Hash::check($data['password'], $user->password)) {
             throw new HttpResponseException(response([
                 'errors' => [
@@ -50,9 +49,7 @@ class UserController extends Controller
                 ]
             ], 401));
         }
-
         $token = $user->createToken('api-token')->plainTextToken;
-
         return response()->json([
             'data' => [
                 'id' => $user->id,
@@ -69,19 +66,10 @@ class UserController extends Controller
 
     public function getUser(Request $request): UserResource
     {
-        $user = $request->user();
-        if (!$user) {
-            throw new HttpResponseException(response([
-                'errors' => [
-                    'message' => ['unauthenticated']
-                ]
-            ], 401));
-        }
-
-    return new UserResource($user);
+        return new UserResource($request->user());
     }
 
-    public function updateUserById(UserUpdateRequest $request): UserResource
+    public function updateUserById(UserUpdateRequest $request): UserResource // <- it means: promise will return as UserResource
     {
         $data = $request->validated();
         $user = Auth::user();
@@ -92,6 +80,24 @@ class UserController extends Controller
             $user->password = $data['password'];
         }
         $user->save();
-        return (new UserResource($user))->response()->setStatusCode(201);
+        return new UserResource($user);
+    }
+
+    public function deleteUserById(Request $request): JsonResponse // <- it means: promise will return as JsonResponse
+    {
+        $user = $request->user();
+        $user->tokens()->delete();
+        $user->delete();
+        return response()->json([
+            'data' => true
+        ], 200);
+    }
+
+    public function logout(Request $request): JsonResponse
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json([
+            'data' => true
+        ], 200);
     }
 }
