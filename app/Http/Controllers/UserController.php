@@ -19,6 +19,7 @@ class UserController extends Controller
 {
     public function register(UserRegisterRequest $request): JsonResponse
     {
+        // validate the data
         $data = $request->validated();
         if(User::where('username', $data['username'])->exists())
         {
