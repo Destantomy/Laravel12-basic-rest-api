@@ -14,6 +14,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"destamy\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/users/register",
 							"protocol": "http",
@@ -40,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"destaa\",\n    \"password\": \"123456\"\n}",
+							"raw": "{\n    \"username\": \"destamy\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -74,13 +83,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "8|cnhWugt1k7R6itCTEbM9xQaO12AVsI0TpO0ZNGWH1118a03e",
+									"value": "5|Ih5CckfPROy3drFqNC4UQmia2jKZtRXW4xNSTGC57e520958",
 									"type": "string"
 								}
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/users",
 							"protocol": "http",
@@ -102,8 +117,24 @@
 				{
 					"name": "getUser",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|dhNTqfFrMvshW45S7hB18YdY7caOEgh215m7UNTee3cf3c5b",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/users/me",
 							"protocol": "http",
@@ -126,8 +157,33 @@
 				{
 					"name": "updateUserById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|dhNTqfFrMvshW45S7hB18YdY7caOEgh215m7UNTee3cf3c5b",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"destakoen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/users/me",
 							"protocol": "http",
@@ -150,8 +206,24 @@
 				{
 					"name": "logout",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|dhNTqfFrMvshW45S7hB18YdY7caOEgh215m7UNTee3cf3c5b",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/users/me/logout",
 							"protocol": "http",
@@ -175,6 +247,16 @@
 				{
 					"name": "deleteUserById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|cgXEbWjbIvvFivlpT5NYpv0uJyrPnTiZyyaBoqVb17d789c0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -204,8 +286,33 @@
 				{
 					"name": "postArticle",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|cgXEbWjbIvvFivlpT5NYpv0uJyrPnTiZyyaBoqVb17d789c0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"bermain dengan setan2\",\r\n    \"content\": \"bermain dengan setan setaaaan\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://127.0.0.1:8000/api/articles/me",
 							"protocol": "http",
@@ -233,7 +340,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "9|4vxgPO9mnlQod8dyKndlvgLtyr8In2VaUIXHJr2j3e7f5bed",
+									"value": "2|cgXEbWjbIvvFivlpT5NYpv0uJyrPnTiZyyaBoqVb17d789c0",
 									"type": "string"
 								}
 							]
@@ -266,7 +373,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "11|h8QGWRqyNLGWzFtyaVD29gJYYe2v4uF52cqERro0a2ff0cb9",
+									"value": "2|cgXEbWjbIvvFivlpT5NYpv0uJyrPnTiZyyaBoqVb17d789c0",
 									"type": "string"
 								}
 							]
@@ -280,7 +387,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/articles/me/40210eb5-b2a7-49c7-8dea-e21b3522cdc0",
+							"raw": "http://127.0.0.1:8000/api/articles/me/fdfebf81-7774-480d-93f8-fa2608d6e817",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -293,7 +400,7 @@
 								"api",
 								"articles",
 								"me",
-								"40210eb5-b2a7-49c7-8dea-e21b3522cdc0"
+								"fdfebf81-7774-480d-93f8-fa2608d6e817"
 							]
 						}
 					},
@@ -310,13 +417,19 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "11|h8QGWRqyNLGWzFtyaVD29gJYYe2v4uF52cqERro0a2ff0cb9",
+									"value": "3|plf1tekZJOl44XyE0rono3wTzZfVZ0BsWpdQyABda6e3abbb",
 									"type": "string"
 								}
 							]
 						},
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"title\": \"testing update lagi ygy\"\n}",
@@ -327,7 +440,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/articles/me/40210eb5-b2a7-49c7-8dea-e21b3522cdc8",
+							"raw": "http://127.0.0.1:8000/api/articles/me/fdfebf81-7774-480d-93f8-fa2608d6e817",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -340,7 +453,60 @@
 								"api",
 								"articles",
 								"me",
-								"40210eb5-b2a7-49c7-8dea-e21b3522cdc8"
+								"fdfebf81-7774-480d-93f8-fa2608d6e817"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateArticleById Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|cgXEbWjbIvvFivlpT5NYpv0uJyrPnTiZyyaBoqVb17d789c0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/articles/me/d1721f25-b6e7-43c6-a8e0-742a2e642e51",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"articles",
+								"me",
+								"d1721f25-b6e7-43c6-a8e0-742a2e642e51"
 							]
 						}
 					},
